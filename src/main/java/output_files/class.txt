@@ -1,12 +1,12 @@
 7
 WebServer
-Ilire Diell 
+Diell Ilire 
 WebChat
 Ilire Diell 
 Database
 Dardan 
 WebSockets
-Ilire Diell 
+Diell Ilire 
 Comments
 Diell 
 Upload

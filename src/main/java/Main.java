@@ -31,8 +31,6 @@ public class Main {
         System.out.println("The initial solution is valid!");
         System.out.println("Fitness score: " + FitnessCalculator.getFitnessScore(assignments));
 
-        System.out.println(assignments);
-
         OutputWriter.writeContent(assignments, fileNames.get(1));
 
 //        List<FullAssignment> assignmentAfterILS = IteratedLocalSearch.iteratedLocalSearchWithRandomRestarts(assignments, Integer.parseInt("0"), projects, contributors);

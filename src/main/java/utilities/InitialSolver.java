@@ -51,6 +51,7 @@ public class InitialSolver {
                             increaseLevelOfAssignedContributorSkills(contributorsToIncreaseScore, contributorSkillsMap);
                             fullAssignment.setProject(currentProject);
                             fullAssignment.setContributors(getContributors(assignedContributors));
+                            fullAssignment.setPrintingOrderForContributors(getPrintingOrder(assignedContributors));
                             break endSearchForThisProject;
                         } else {
 
@@ -75,7 +76,7 @@ public class InitialSolver {
 
                                 assignedContributorIds.add(currentContributor.getId() + "");
                                 assignedSkillIds.add(currentProjectSkill.getId() + "");
-                                assignedContributors.add(new ContributorWithAssignedSkill(currentContributor, currentProjectSkill));
+                                assignedContributors.add(assignedContributors.size(), new ContributorWithAssignedSkill(currentContributor, currentProjectSkill));
                                 contributorsToIncreaseScore.add(new ContributorWithAssignedSkill(currentContributor, currentContributorSkill));
                             }
                             if (!Objects.equals(currentProjectSkill.getName(), currentContributorSkill.getName()) &&
@@ -95,6 +96,7 @@ public class InitialSolver {
                         increaseLevelOfAssignedContributorSkills(contributorsToIncreaseScore, contributorSkillsMap);
                         fullAssignment.setProject(currentProject);
                         fullAssignment.setContributors(getContributors(assignedContributors));
+                        fullAssignment.setPrintingOrderForContributors(getPrintingOrder(assignedContributors));
                         break endSearchForThisProject;
                     }
                 }
@@ -134,5 +136,15 @@ public class InitialSolver {
 
     private static List<Contributor> getContributors(List<ContributorWithAssignedSkill> contributorWithAssignedSkillList) {
         return contributorWithAssignedSkillList.stream().map(ContributorWithAssignedSkill::getContributor).collect(Collectors.toList());
+    }
+
+    private static List<FullAssignment.PrintingOrder> getPrintingOrder(List<ContributorWithAssignedSkill> contributorWithAssignedSkillList) {
+        List<FullAssignment.PrintingOrder> printingOrders = new ArrayList<>();
+
+        for (ContributorWithAssignedSkill c : contributorWithAssignedSkillList) {
+            printingOrders.add(new FullAssignment.PrintingOrder(c.getAssignedSkill().getId(), c.getContributor()));
+        }
+
+        return printingOrders;
     }
 }

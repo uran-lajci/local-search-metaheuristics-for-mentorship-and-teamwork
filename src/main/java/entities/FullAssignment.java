@@ -9,12 +9,9 @@ public class FullAssignment {
     private UUID id;
     private Project project;
     private List<Contributor> contributors;
-
-    private static class renditja {
-        private int roleIndex;
-        private UUID projectSkillID;
-        private UUID contributorSkillID;
-    }
+    private List<PrintingOrder> printingOrderForContributors;
+    private List<UUID> contributorIds;
+    private List<UUID> skillIds;
 
     public FullAssignment() {
     }
@@ -23,6 +20,30 @@ public class FullAssignment {
         this.id = id;
         this.project = project;
         this.contributors = contributors;
+    }
+
+    public List<UUID> getContributorIds() {
+        return contributorIds;
+    }
+
+    public void setContributorIds(List<UUID> contributorIds) {
+        this.contributorIds = contributorIds;
+    }
+
+    public List<UUID> getSkillIds() {
+        return skillIds;
+    }
+
+    public void setSkillIds(List<UUID> skillIds) {
+        this.skillIds = skillIds;
+    }
+
+    public List<PrintingOrder> getPrintingOrderForContributors() {
+        return printingOrderForContributors;
+    }
+
+    public void setPrintingOrderForContributors(List<PrintingOrder> printingOrderForContributors) {
+        this.printingOrderForContributors = printingOrderForContributors;
     }
 
     public UUID getId() {
@@ -73,5 +94,42 @@ public class FullAssignment {
         }
         fullAssignment.setContributors(copiedContributors);
         return fullAssignment;
+    }
+
+    public static class PrintingOrder {
+        private UUID projectSkillID;
+        private Contributor contributor;
+
+        public PrintingOrder() {
+        }
+
+        public PrintingOrder(UUID projectSkillID, Contributor contributor) {
+            this.projectSkillID = projectSkillID;
+            this.contributor = contributor;
+        }
+
+        public UUID getProjectSkillID() {
+            return projectSkillID;
+        }
+
+        public void setProjectSkillID(UUID projectSkillID) {
+            this.projectSkillID = projectSkillID;
+        }
+
+        public Contributor getContributor() {
+            return contributor;
+        }
+
+        public void setContributor(Contributor contributor) {
+            this.contributor = contributor;
+        }
+
+        @Override
+        public String toString() {
+            return "PrintingOrder{" +
+                    "projectSkillID=" + projectSkillID +
+                    ", contributor=" + contributor.getName() +
+                    '}';
+        }
     }
 }

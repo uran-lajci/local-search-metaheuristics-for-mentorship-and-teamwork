@@ -10,8 +10,8 @@ public class AssignmentInitialSolver {
         Map<UUID, List<String>> contributorSkillMap = contributors.stream().collect(Collectors.toMap(Contributor::getId, contributor -> contributor.getSkills().stream().map(Skill::getName).collect(Collectors.toList())));
         Map<UUID, Map<String, SkillNameWithLevel>> contributorSkillWithLevelMap = contributors.stream().collect(Collectors.toMap(Contributor::getId, contributor -> contributor.getSkills().stream().collect(Collectors.toMap(Skill::getName, skill -> new SkillNameWithLevel(skill.getName(), skill.getLevel())))));
 
-
         List<FullAssignment> assignments = new ArrayList<>();
+        List<ContributorWithAssignedSkill> contributurSkillToBeIncreased = new ArrayList<>();
 
         go_to_next_project:
         for (int i = 0; i < projects.size(); i++) {
@@ -24,13 +24,11 @@ public class AssignmentInitialSolver {
             List<ContributorWithAssignedSkill> assignedContributors = new ArrayList<>();
             List<ContributorWithAssignedSkill> contributorsToIncreaseScore = new ArrayList<>();
 
-
             for (int j = 0; j < projectSkills.size(); j++) {
                 Skill projectSkill = projectSkills.get(j);
 
                 for (int k = 0; k < contributors.size(); k++) {
                     UUID contributorId = contributors.get(k).getId();
-
 
                     if (contributorSkillMap.get(contributorId).contains(projectSkill.getName())) {
                         int contributorLevel = contributorSkillWithLevelMap.get(contributorId).get(projectSkill.getName()).getLevel();
@@ -88,9 +86,25 @@ public class AssignmentInitialSolver {
                 assignment.setContributors(assignmentContributor);
                 assignment.setPrintingOrderForContributors(printingOrders);
                 assignments.add(assignment);
-                increaseLevelOfAssignedContributorSkills(contributorsToIncreaseScore, contributorSkillsMap);
+                contributurSkillToBeIncreased.addAll(contributorsToIncreaseScore);
             }
         }
+
+        for (int i = 0; i < contributors.size(); i++) {
+            Contributor contributor = contributors.get(i);
+            for (int j = 0; j < contributurSkillToBeIncreased.size(); j++) {
+                if (Objects.equals(contributor.getName(), contributurSkillToBeIncreased.get(j).getContributor().getName())) {
+                    for (int k = 0; k < contributor.getSkills().size(); k++) {
+                        if (Objects.equals(contributor.getSkills().get(k).getName(), contributurSkillToBeIncreased.get(j).getAssignedSkill().getName())) {
+                            int level = contributor.getSkills().get(k).getLevel() + 1;
+                            contributor.getSkills().get(k).setLevel(level);
+                        }
+                    }
+                }
+            }
+        }
+
+
         return assignments;
     }
 
@@ -104,14 +118,4 @@ public class AssignmentInitialSolver {
         return false;
     }
 
-    private static void increaseLevelOfAssignedContributorSkills(List<ContributorWithAssignedSkill> contributorWithAssignedSkills, Map<UUID, Map<UUID, Skill>> contributorSkillsMap) {
-        for (ContributorWithAssignedSkill contributorWithSkill : contributorWithAssignedSkills) {
-            Skill skill = contributorSkillsMap.get(contributorWithSkill.getContributor().getId())
-                    .get(contributorWithSkill.getAssignedSkill().getId());
-
-            if (skill != null) {
-                skill.setLevel(contributorWithSkill.getAssignedSkill().getLevel() + 1);
-            }
-        }
-    }
 }

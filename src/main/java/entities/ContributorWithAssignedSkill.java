@@ -27,4 +27,12 @@ public class ContributorWithAssignedSkill {
     public void setAssignedSkill(Skill assignedSkill) {
         this.assignedSkill = assignedSkill;
     }
+
+    @Override
+    public String toString() {
+        return "ContributorWithAssignedSkill{" +
+                "contributor=" + contributor +
+                ", assignedSkill=" + assignedSkill +
+                '}';
+    }
 }

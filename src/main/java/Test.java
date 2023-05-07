@@ -4,7 +4,6 @@ import entities.Project;
 import entities.Skill;
 import utilities.FitnessCalculator;
 import utilities.InputReader;
-import utilities.OutputWriter;
 import utilities.Validator;
 
 import java.util.Comparator;
@@ -14,7 +13,7 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) throws Exception {
-        List<String> fileNames = InputReader.readFileName("d");
+        List<String> fileNames = InputReader.readFileName("c");
         List<String> fileContents = InputReader.readFileContent(fileNames.get(0));
 
         List<Contributor> contributors = InputReader.readContributors(fileContents);
@@ -50,23 +49,25 @@ public class Test {
             System.exit(0);
         }
 
+//        System.out.println(contributors);
+
         System.out.println("The initial solution is valid!");
         int initialFitnessScore = FitnessCalculator.getFitnessScore(assignments);
         System.out.println("Fitness score: " + initialFitnessScore);
 
-        List<FullAssignment> assignmentsAfterILS = ILS.iteratedLocalSearchWithRandomRestarts(assignments, 1, projects, contributors);
-
-        if (!Validator.areAssignmentsValid(assignmentsAfterILS, deepCopyOfContributorsForILSValidation, deepCopyOfProjectsForILSValidation)) {
-            System.out.println("Wrong iterated local search solution!");
-            System.exit(0);
-        }
-
-        System.out.println("\nThe ILS solution is valid!");
-        int ilsFitnessScore = FitnessCalculator.getFitnessScore(assignmentsAfterILS);
-        System.out.println("Fitness score: " + ilsFitnessScore);
-
-        System.out.println("Added: " + (ilsFitnessScore - initialFitnessScore));
-
-        OutputWriter.writeContent(assignmentsAfterILS, fileNames.get(1));
+//        List<FullAssignment> assignmentsAfterILS = ILS.iteratedLocalSearchWithRandomRestarts(assignments, 1, projects, contributors);
+//
+//        if (!Validator.areAssignmentsValid(assignmentsAfterILS, deepCopyOfContributorsForILSValidation, deepCopyOfProjectsForILSValidation)) {
+//            System.out.println("Wrong iterated local search solution!");
+//            System.exit(0);
+//        }
+//
+//        System.out.println("\nThe ILS solution is valid!");
+//        int ilsFitnessScore = FitnessCalculator.getFitnessScore(assignmentsAfterILS);
+//        System.out.println("Fitness score: " + ilsFitnessScore);
+//
+//        System.out.println("Added: " + (ilsFitnessScore - initialFitnessScore));
+//
+//        OutputWriter.writeContent(assignmentsAfterILS, fileNames.get(1));
     }
 }

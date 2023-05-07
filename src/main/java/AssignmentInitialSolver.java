@@ -11,7 +11,7 @@ public class AssignmentInitialSolver {
         Map<UUID, Map<String, SkillNameWithLevel>> contributorSkillWithLevelMap = contributors.stream().collect(Collectors.toMap(Contributor::getId, contributor -> contributor.getSkills().stream().collect(Collectors.toMap(Skill::getName, skill -> new SkillNameWithLevel(skill.getName(), skill.getLevel())))));
 
         List<FullAssignment> assignments = new ArrayList<>();
-        List<ContributorWithAssignedSkill> contributurSkillToBeIncreased = new ArrayList<>();
+        List<ContributorWithAssignedSkill> contributorSkillToBeIncreased = new ArrayList<>();
 
         go_to_next_project:
         for (int i = 0; i < projects.size(); i++) {
@@ -39,8 +39,13 @@ public class AssignmentInitialSolver {
                                 contributorIds.add(contributorId);
                                 skillIds.add(projectSkill.getId());
                                 assignedContributors.add(new ContributorWithAssignedSkill(contributors.get(k), projectSkill));
+                                contributorsToIncreaseScore.add(new ContributorWithAssignedSkill(contributors.get(k), projectSkill));
                                 if (projectSkill.getLevel() == contributorLevel) {
-                                    contributorsToIncreaseScore.add(new ContributorWithAssignedSkill(contributors.get(k), projectSkill));
+                                    for (Skill s : contributors.get(k).getSkills()) {
+                                        if (Objects.equals(s.getName(), projectSkill.getName())) {
+                                            s.setLevel(s.getLevel() + 1);
+                                        }
+                                    }
                                 }
                                 break;
                             }
@@ -53,23 +58,29 @@ public class AssignmentInitialSolver {
                                     skillIds.add(projectSkill.getId());
                                     assignedContributors.add(new ContributorWithAssignedSkill(contributors.get(k), projectSkill));
                                     contributorsToIncreaseScore.add(new ContributorWithAssignedSkill(contributors.get(k), projectSkill));
-                                    break;
-                                }
-                            }
-                        } else if (projectSkill.getLevel() == 1) {
-                            if (!contributorIds.contains(contributorId) && !skillIds.contains(projectSkill.getId())) {
-                                if (hasMentor(projectSkill.getName(), projectSkill.getLevel(), assignedContributors)) {
-                                    printingOrders.add(new FullAssignment.PrintingOrder(projectSkill.getId(), contributors.get(k)));
-                                    assignmentContributor.add(contributors.get(k));
-                                    contributorIds.add(contributorId);
-                                    skillIds.add(projectSkill.getId());
-                                    assignedContributors.add(new ContributorWithAssignedSkill(contributors.get(k), projectSkill));
-                                    contributorsToIncreaseScore.add(new ContributorWithAssignedSkill(contributors.get(k), projectSkill));
-                                    contributors.get(k).getSkills().add(new Skill(UUID.randomUUID(), projectSkill.getName(), 1));
+                                    for (Skill s : contributors.get(k).getSkills()) {
+                                        if (Objects.equals(s.getName(), projectSkill.getName())) {
+                                            s.setLevel(s.getLevel() + 1);
+                                        }
+                                    }
                                     break;
                                 }
                             }
                         }
+//                        else if (projectSkill.getLevel() == 1) {
+//                            if (!contributorIds.contains(contributorId) && !skillIds.contains(projectSkill.getId())) {
+//                                if (hasMentor(projectSkill.getName(), projectSkill.getLevel(), assignedContributors)) {
+//                                    printingOrders.add(new FullAssignment.PrintingOrder(projectSkill.getId(), contributors.get(k)));
+//                                    assignmentContributor.add(contributors.get(k));
+//                                    contributorIds.add(contributorId);
+//                                    skillIds.add(projectSkill.getId());
+//                                    assignedContributors.add(new ContributorWithAssignedSkill(contributors.get(k), projectSkill));
+//                                    contributorsToIncreaseScore.add(new ContributorWithAssignedSkill(contributors.get(k), projectSkill));
+//                                    contributors.get(k).getSkills().add(new Skill(UUID.randomUUID(), projectSkill.getName(), 1));
+//                                    break;
+//                                }
+//                            }
+//                        }
 
                     }
 
@@ -86,18 +97,17 @@ public class AssignmentInitialSolver {
                 assignment.setContributors(assignmentContributor);
                 assignment.setPrintingOrderForContributors(printingOrders);
                 assignments.add(assignment);
-                contributurSkillToBeIncreased.addAll(contributorsToIncreaseScore);
-            }
-        }
-
-        for (int i = 0; i < contributors.size(); i++) {
-            Contributor contributor = contributors.get(i);
-            for (int j = 0; j < contributurSkillToBeIncreased.size(); j++) {
-                if (Objects.equals(contributor.getName(), contributurSkillToBeIncreased.get(j).getContributor().getName())) {
-                    for (int k = 0; k < contributor.getSkills().size(); k++) {
-                        if (Objects.equals(contributor.getSkills().get(k).getName(), contributurSkillToBeIncreased.get(j).getAssignedSkill().getName())) {
-                            int level = contributor.getSkills().get(k).getLevel() + 1;
-                            contributor.getSkills().get(k).setLevel(level);
+            } else {
+                for (int d = 0; d < contributors.size(); d++) {
+                    Contributor contributor = contributors.get(d);
+                    for (int c = 0; c < contributorSkillToBeIncreased.size(); c++) {
+                        if (Objects.equals(contributor.getName(), contributorSkillToBeIncreased.get(c).getContributor().getName())) {
+                            for (int k = 0; k < contributor.getSkills().size(); k++) {
+                                if (Objects.equals(contributor.getSkills().get(k).getName(), contributorSkillToBeIncreased.get(c).getAssignedSkill().getName())) {
+                                    int level = contributor.getSkills().get(k).getLevel() - 1;
+                                    contributor.getSkills().get(k).setLevel(level);
+                                }
+                            }
                         }
                     }
                 }

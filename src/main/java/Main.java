@@ -1,3 +1,4 @@
+import algorithms.IteratedLocalSearch;
 import entities.Assignment;
 import entities.Contributor;
 import entities.NameAssignment;

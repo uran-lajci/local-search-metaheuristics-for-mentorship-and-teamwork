@@ -16,8 +16,7 @@ public class InitialSolver {
 
     public static List<Assignment> solveMentorshipAndTeamwork(List<Project> projects, List<Contributor> contributors) {
 
-
-        introduceRandomnessToTheSolution(projects, contributors);
+        applyHeuristic(projects, contributors);
 
         Map<UUID, List<String>> contributorIdWithSkillNamesMap = getContributorSkillsMap(contributors);
         Map<UUID, Map<String, Integer>> contributorIdAndSkillNameWithLevel = getContributorSkillLevelMap(contributors);
@@ -93,7 +92,7 @@ public class InitialSolver {
         }
     }
 
-    private static void introduceRandomnessToTheSolution(List<Project> projects, List<Contributor> contributors) {
+    private static void applyHeuristic(List<Project> projects, List<Contributor> contributors) {
         Collections.shuffle(contributors, new Random());
 //        Collections.shuffle(projects, new Random());
         projects.sort((b1, b2) -> Integer.compare(-b2.getBestBefore(), -b1.getBestBefore()));

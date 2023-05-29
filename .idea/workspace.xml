@@ -5,16 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c3d1d1d-8f77-44ff-8e6d-b46cb9485c92" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algorithms/HillClimbingWithRandomRestarts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algorithms/IteratedLocalSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algorithms/NeighborhoodOperators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algorithms/SimulatedAnnealing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utilities/MetaheuristicUtilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_HCRR_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_HCRR_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_ILS_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_ILS_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_SA_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_SA_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_HCRR_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_HCRR_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_ILS_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_ILS_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_SA_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_SA_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_HCRR_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_HCRR_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_ILS_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_ILS_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_SA_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_SA_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_HCRR_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_HCRR_10" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_HCRR_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_10" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_SA_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_SA_10" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_SA_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_HCRR_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_HCRR_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_ILS_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_ILS_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_SA_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_SA_5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algorithms/IteratedLocalSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algorithms/IteratedLocalSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algorithms/NeighborhoodOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algorithms/NeighborhoodOperators.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utilities/InitialSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/InitialSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/IteratedLocalSearch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/InputReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/InputReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +78,26 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="local-search-metaheuristics-for-mentorship-and-teamwork" />
+      <option name="PROGRAM_PARAMETERS" value="c 5" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

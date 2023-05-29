@@ -3,11 +3,15 @@ package algorithms;
 import entities.Assignment;
 import entities.Contributor;
 import entities.Project;
+import entities.Skill;
 import utilities.MetaheuristicUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class IteratedLocalSearch {
 
@@ -37,7 +41,7 @@ public class IteratedLocalSearch {
             }
 
             currentHomeBase = newHomeBase(currentHomeBase, currentSolution);
-            currentSolution = perturb(currentHomeBase);
+            currentSolution = perturb(currentHomeBase, contributors);
         }
 
         return bestSolution;
@@ -52,9 +56,40 @@ public class IteratedLocalSearch {
         }
     }
 
-    private static List<Assignment> perturb(List<Assignment> assignments) {
 
-        // add a different perturb operation
+    private static List<Assignment> perturb(List<Assignment> assignments, List<Contributor> contributors) {
+
+        int removeCount = (int) Math.ceil(assignments.size() * 0.8);
+        List<Assignment> removedAssignments = new ArrayList<>();
+        for (int i = 0; i < removeCount; i++) {
+            removedAssignments.add(assignments.remove(assignments.size() - 1));
+        }
+
+        for (Assignment assignment : removedAssignments) {
+            Project project = assignment.getProject();
+            Map<Integer, Contributor> contributorMap = assignment.getRoleWithContributorMap();
+            for (Integer index : contributorMap.keySet()) {
+                Map<String, Integer> contributorSkillLevel = contributorMap.get(index).getSkills().stream().collect(
+                        Collectors.toMap(Skill::getName, Skill::getLevel, (existingValue, newValue) -> existingValue));
+
+                Skill skill = project.getSkills().get(index - 1);
+
+                if (contributorSkillLevel.containsKey(skill.getName())) {
+                    if (skill.getLevel() == contributorSkillLevel.get(skill.getName())
+                            || skill.getLevel() == contributorSkillLevel.get(skill.getName()) - 1) {
+                        for (Contributor contributor : contributors) {
+                            if (Objects.equals(contributor.getName(), contributorMap.get(index).getName())) {
+                                for (Skill contributorSkill : contributor.getSkills()) {
+                                    if (Objects.equals(skill.getName(), contributorSkill.getName())) {
+                                        skill.setLevel(skill.getLevel() - 1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         return assignments;
     }

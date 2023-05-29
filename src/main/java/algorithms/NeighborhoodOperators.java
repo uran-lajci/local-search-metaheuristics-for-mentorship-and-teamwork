@@ -50,38 +50,41 @@ public class NeighborhoodOperators {
             newContributorState.put(projectName.split("-")[1], contributorsState.get(projectName));
         }
 
-        for (int i = 0; i < assignments.size(); i++) {
-            for (int j = 0; j < assignments.size(); j++) {
-                if (i != j) {
-                    Project secondProject = assignments.get(j).getProject();
-                    Map<Integer, Contributor> secondProjectAssignedContributors = assignments.get(j).getRoleWithContributorMap();
-                    List<UUID> secondProjectAssignedContributorIds = secondProjectAssignedContributors.values().stream().map(Contributor::getId).collect(Collectors.toList());
+        int i = new Random(assignments.size()).nextInt();
+        int j = new Random(assignments.size()).nextInt();
 
-                    List<Contributor> firstContributors = newContributorState.get(assignments.get(i).getProject().getName());
+//        for (int i = 0; i < assignments.size(); i++) {
+//            for (int j = 0; j < assignments.size(); j++) {
+        if (i != j) {
+            Project secondProject = assignments.get(j).getProject();
+            Map<Integer, Contributor> secondProjectAssignedContributors = assignments.get(j).getRoleWithContributorMap();
+            List<UUID> secondProjectAssignedContributorIds = secondProjectAssignedContributors.values().stream().map(Contributor::getId).collect(Collectors.toList());
 
-                    List<Contributor> OnlyProjectContributors = firstContributors.stream()
-                            .filter(contributor -> secondProjectAssignedContributorIds.contains(contributor.getId())).collect(Collectors.toList());
+            List<Contributor> firstContributors = newContributorState.get(assignments.get(i).getProject().getName());
 
-                    List<Project> c = new ArrayList<>();
-                    c.add(secondProject);
-                    List<Assignment> newAssignments = InitialSolver.solveMentorshipAndTeamwork(c, OnlyProjectContributors);
+            List<Contributor> OnlyProjectContributors = firstContributors.stream()
+                    .filter(contributor -> secondProjectAssignedContributorIds.contains(contributor.getId())).collect(Collectors.toList());
 
-                    if (newAssignments.size() > 0) {
-                        int assignmentsScore1 = FitnessCalculator.getFitnessScore(assignments);
-                        List<Assignment> newAssignmentList = assignments.stream().map(Assignment::deepCopy).collect(Collectors.toList());
-                        Collections.swap(newAssignmentList, i, j);
+            List<Project> c = new ArrayList<>();
+            c.add(secondProject);
+            List<Assignment> newAssignments = InitialSolver.solveMentorshipAndTeamwork(c, OnlyProjectContributors);
 
-                        int assignmentsScore2 = FitnessCalculator.getFitnessScore(newAssignmentList);
+            if (newAssignments.size() > 0) {
+                int assignmentsScore1 = FitnessCalculator.getFitnessScore(assignments);
+                List<Assignment> newAssignmentList = assignments.stream().map(Assignment::deepCopy).collect(Collectors.toList());
+                Collections.swap(newAssignmentList, i, j);
 
-                        if (assignmentsScore2 > assignmentsScore1) {
-                            System.out.println(i + " = " + assignmentsScore2 + " " + assignmentsScore1);
-                            return newAssignmentList;
-                        }
-                        // Update Score
-                    }
+                int assignmentsScore2 = FitnessCalculator.getFitnessScore(newAssignmentList);
+
+                if (assignmentsScore2 > assignmentsScore1) {
+//                            System.out.println(i + " = " + assignmentsScore2 + " " + assignmentsScore1);
+                    return newAssignmentList;
                 }
+                // Update Score
             }
         }
+//            }
+//        }
 
         return assignments;
     }

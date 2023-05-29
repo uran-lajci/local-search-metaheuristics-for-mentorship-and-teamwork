@@ -12,12 +12,9 @@ public class InitialSolver {
 
     private static Map<UUID, String> contributorIdAndSkillNameToIncrease = new HashMap<>();
     private static Map<UUID, String> contributorIdAndSkillNameToAdd = new HashMap<>();
-    private static Map<String, List<Contributor>> projectNameWithContributorsMap = new HashMap<>();
+    private static final Map<String, List<Contributor>> projectNameWithContributorsMap = new HashMap<>();
 
     public static List<Assignment> solveMentorshipAndTeamwork(List<Project> projects, List<Contributor> contributors) {
-
-        applyHeuristic(projects, contributors);
-
         Map<UUID, List<String>> contributorIdWithSkillNamesMap = getContributorSkillsMap(contributors);
         Map<UUID, Map<String, Integer>> contributorIdAndSkillNameWithLevel = getContributorSkillLevelMap(contributors);
         List<Assignment> assignments = new ArrayList<>();
@@ -55,21 +52,6 @@ public class InitialSolver {
     }
 
     public static Map<String, List<Contributor>> getContributorsState() {
-//        System.out.println("------------------------------------------------------------------------------");
-//
-//        for (String projectName : projectNameWithContributorsMap.keySet()) {
-//            System.out.println(projectName);
-//            List<Contributor> contributorList = projectNameWithContributorsMap.get(projectName);
-//            for(Contributor contributor : contributorList) {
-//                System.out.print(contributor.getName() + " ");
-//                for(Skill skill : contributor.getSkills()) {
-//                    System.out.print(skill.getName() + " " + skill.getLevel() + " - ");
-//                }
-//            }
-//            System.out.println();
-//        }
-//
-//        System.out.println("------------------------------------------------------------------------------");
         return projectNameWithContributorsMap;
     }
 
@@ -90,22 +72,6 @@ public class InitialSolver {
             // then compare based on total skills
             return Integer.compare(p1TotalSkills, p2TotalSkills);
         }
-    }
-
-    private static void applyHeuristic(List<Project> projects, List<Contributor> contributors) {
-        Collections.shuffle(contributors, new Random());
-//        Collections.shuffle(projects, new Random());
-        projects.sort((b1, b2) -> Integer.compare(-b2.getBestBefore(), -b1.getBestBefore()));
-//        projects.sort((p1, p2) -> {
-//            // Compare by score
-//            int scoreComparison = Integer.compare(p2.getScore(), p1.getScore());
-//            if (scoreComparison != 0) {
-//                return scoreComparison;
-//            }
-//            // Scores are equal, compare by bestBefore
-//            return Integer.compare(p1.getBestBefore(), p2.getBestBefore());
-//        });
-//        projects.sort(new ProjectComparator());
     }
 
 
@@ -234,14 +200,8 @@ public class InitialSolver {
 
 
     private static void rearrangeContributors(List<Contributor> contributors, Map<Integer, Contributor> assignedContributors) {
-        // Remove all assigned contributors from the contributors list
         contributors.removeAll(assignedContributors.values());
         contributors.addAll(assignedContributors.values());
-        // Add all assigned contributors to random positions in the contributors list
-//        for (Contributor assignedContributor : assignedContributors.values()) {
-//            int randomIndex = new Random().nextInt(contributors.size() + 1);
-//            contributors.add(randomIndex, assignedContributor);
-//        }
     }
 
 

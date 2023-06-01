@@ -3,13 +3,10 @@ package algorithms;
 import entities.Assignment;
 import entities.Contributor;
 import entities.Project;
-import entities.Skill;
+import utilities.InitialSolver;
 import utilities.MetaheuristicUtilities;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -18,7 +15,13 @@ public class IteratedLocalSearch {
     private static final int SECONDS_IN_MINUTE = 60;
 
 
-    public static List<Assignment> performSearch(List<Assignment> initialSolution, int maxMinutes, List<Project> projects, List<Contributor> contributors) {
+    public static List<Assignment> performSearch(
+            List<Assignment> initialSolution,
+            int maxMinutes,
+            List<Project> projects,
+            List<Contributor> contributors,
+            List<Contributor> initialContributors
+    ) {
         List<Assignment> currentSolution = new ArrayList<>(initialSolution);
         List<Assignment> currentHomeBase = new ArrayList<>(currentSolution);
         List<Assignment> bestSolution = new ArrayList<>(currentSolution);
@@ -28,7 +31,8 @@ public class IteratedLocalSearch {
 
         while (System.currentTimeMillis() - startTime < maxMillis) {
             int innerIteration = 0;
-            while (System.currentTimeMillis() - startTime < maxMillis && innerIteration < maxMinutes * SECONDS_IN_MINUTE) {
+//            System.currentTimeMillis() - startTime < maxMillis && innerIteration < maxMinutes * SECONDS_IN_MINUTE
+            while (innerIteration < 500) {
                 List<Assignment> tweakedSolution = NeighborhoodOperators.tweak(MetaheuristicUtilities.copySolution(currentSolution), projects, contributors);
                 if (MetaheuristicUtilities.deltaQuality(currentSolution, tweakedSolution) > 0) {
                     currentSolution = new ArrayList<>(tweakedSolution);
@@ -39,13 +43,45 @@ public class IteratedLocalSearch {
             if (MetaheuristicUtilities.deltaQuality(bestSolution, currentSolution) > 0) {
                 bestSolution = new ArrayList<>(currentSolution);
             }
+            System.out.println("After Tweak 1: " + MetaheuristicUtilities.quality(bestSolution));
+            System.out.println("After Tweak 2: " + MetaheuristicUtilities.quality(currentSolution));
 
             currentHomeBase = newHomeBase(currentHomeBase, currentSolution);
-            currentSolution = perturb(currentHomeBase, contributors);
+
+            List<Contributor> useContributors = initialContributors.stream().map(Contributor::deepCopy).collect(Collectors.toList());
+            currentSolution = perturb(currentHomeBase, useContributors).stream().map(Assignment::deepCopy).collect(Collectors.toList());
+            contributors = contributors.stream().map(Contributor::deepCopy).collect(Collectors.toList());
+
+            System.out.println("Perturb: " + MetaheuristicUtilities.quality(currentSolution));
         }
+
+        List<UUID> projectIDs = bestSolution.stream().map(assignment -> assignment.getProject().getId()).collect(Collectors.toList());
+        List<Project> unassignedProjects = projects.stream().filter(project -> !projectIDs.contains(project.getId())).collect(Collectors.toList());
+        List<Assignment> additionalAssignments = InitialSolver.solveMentorshipAndTeamwork(unassignedProjects, contributors);
+        bestSolution.addAll(additionalAssignments);
 
         return bestSolution;
     }
+
+
+//    public static List<Contributor> updateScore(List<Contributor> initialContributors, List<Assignment> assignments) {
+//        List<Contributor> n_contributors = new ArrayList<>();
+//
+//        for (int i = 0; i < assignments.size(); i++) {
+//            Project project = assignments.get(i).getProject();
+//            List<Contributor> contributors = new ArrayList<>(assignments.get(i).getRoleWithContributorMap().values());
+//
+//            for(int j = 0; j < contributors.size(); j++) {
+//                if() {
+//
+//                }
+//            }
+//
+//        }
+//
+//
+//        return initialContributors;
+//    }
 
 
     public static List<Assignment> newHomeBase(List<Assignment> currentHomeBase, List<Assignment> currentSolution) {
@@ -57,40 +93,35 @@ public class IteratedLocalSearch {
     }
 
 
-    private static List<Assignment> perturb(List<Assignment> assignments, List<Contributor> contributors) {
+    private static List<Assignment> perturb(List<Assignment> assignments, List<Contributor> initialContributors) {
+        List<Project> newProjects = assignments.stream()
+                .map(Assignment::getProject)
+                .collect(Collectors.toList());
 
-        int removeCount = (int) Math.ceil(assignments.size() * 0.8);
-        List<Assignment> removedAssignments = new ArrayList<>();
-        for (int i = 0; i < removeCount; i++) {
-            removedAssignments.add(assignments.remove(assignments.size() - 1));
+        int numElementsToRemove = (int) (assignments.size() * 0.5);
+
+        Random random = new Random();
+        for (int i = 0; i < numElementsToRemove; i++) {
+            int randomIndex = random.nextInt(newProjects.size());
+            newProjects.remove(randomIndex);
         }
+//        newProjects.sort((b1, b2) -> Integer.compare(-b2.getBestBefore(), -b1.getBestBefore()));
+//        newProjects.sort((p1, p2) -> {
+//            // Compare by score
+//            int scoreComparison = Integer.compare(p2.getScore(), p1.getScore());
+//            if (scoreComparison != 0) {
+//                return scoreComparison;
+//            }
+//            // Scores are equal, compare by bestBefore
+//            return Integer.compare(p1.getBestBefore(), p2.getBestBefore());
+//        });
+////        Collections.shuffle(newProjects);
+//
+////        newProjects.sort((b1, b2) -> Integer.compare(-b2.getBestBefore(), -b1.getBestBefore()));
+////        Collections.shuffle(initialContributors);
 
-        for (Assignment assignment : removedAssignments) {
-            Project project = assignment.getProject();
-            Map<Integer, Contributor> contributorMap = assignment.getRoleWithContributorMap();
-            for (Integer index : contributorMap.keySet()) {
-                Map<String, Integer> contributorSkillLevel = contributorMap.get(index).getSkills().stream().collect(
-                        Collectors.toMap(Skill::getName, Skill::getLevel, (existingValue, newValue) -> existingValue));
+        newProjects.sort((b1, b2) -> Integer.compare(-b2.getScore(), -b1.getScore()));
 
-                Skill skill = project.getSkills().get(index - 1);
-
-                if (contributorSkillLevel.containsKey(skill.getName())) {
-                    if (skill.getLevel() == contributorSkillLevel.get(skill.getName())
-                            || skill.getLevel() == contributorSkillLevel.get(skill.getName()) - 1) {
-                        for (Contributor contributor : contributors) {
-                            if (Objects.equals(contributor.getName(), contributorMap.get(index).getName())) {
-                                for (Skill contributorSkill : contributor.getSkills()) {
-                                    if (Objects.equals(skill.getName(), contributorSkill.getName())) {
-                                        skill.setLevel(skill.getLevel() - 1);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return assignments;
+        return InitialSolver.solveMentorshipAndTeamwork(newProjects, initialContributors);
     }
 }

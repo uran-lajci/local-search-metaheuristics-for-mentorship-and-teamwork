@@ -5,46 +5,82 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c3d1d1d-8f77-44ff-8e6d-b46cb9485c92" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_HCRR_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_HCRR_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_ILS_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_ILS_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_SA_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt_SA_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_HCRR_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_HCRR_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_ILS_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_ILS_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_SA_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt_SA_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_HCRR_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_HCRR_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_ILS_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_ILS_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_SA_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt_SA_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_HCRR_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_HCRR_10" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_HCRR_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_10" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_SA_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_SA_10" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_SA_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_HCRR_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_HCRR_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_ILS_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_ILS_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_SA_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/output_files/f.txt_SA_5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algorithms/IteratedLocalSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algorithms/IteratedLocalSearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algorithms/NeighborhoodOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algorithms/NeighborhoodOperators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/output_files/b.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/output_files/b.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/output_files/c.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/output_files/c.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/output_files/d.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/output_files/d.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/output_files/e.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_1" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_5" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/output_files/e.txt_ILS_5" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utilities/InitialSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/InitialSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utilities/InputReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/InputReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/algorithms/HillClimbingWithRandomRestarts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/algorithms/HillClimbingWithRandomRestarts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/algorithms/IteratedLocalSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/algorithms/IteratedLocalSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/algorithms/NeighborhoodOperators.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/algorithms/NeighborhoodOperators.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/algorithms/SimulatedAnnealing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/algorithms/SimulatedAnnealing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/Assignment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Assignment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/Contributor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Contributor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/NameAssignment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/NameAssignment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/Project.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Project.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/Skill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Skill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/input_files/a_an_example.in.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/input_files/b_better_start_small.in.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/input_files/c_collaboration.in.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/input_files/class_task.in.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/input_files/d_dense_schedule.in.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/input_files/e_exceptional_skills.in.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/input_files/f_find_great_mentors.in.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/a.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/b.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/b.txt_HCRR_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/b.txt_HCRR_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/b.txt_ILS_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/b.txt_ILS_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/b.txt_SA_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/b.txt_SA_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/c.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/c.txt_HCRR_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/c.txt_HCRR_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/c.txt_ILS_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/c.txt_ILS_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/c.txt_SA_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/c.txt_SA_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/class.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/d.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/d.txt_HCRR_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/d.txt_HCRR_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/d.txt_ILS_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/d.txt_ILS_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/d.txt_SA_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/d.txt_SA_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt_HCRR_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt_HCRR_10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt_HCRR_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt_ILS_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt_ILS_10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt_ILS_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt_SA_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt_SA_10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/e.txt_SA_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/f.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/f.txt_HCRR_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/f.txt_HCRR_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/f.txt_ILS_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/f.txt_ILS_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/f.txt_SA_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output_files/f.txt_SA_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/FitnessCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/FitnessCalculator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/InitialSolver$ProjectComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/InitialSolver$ProjectComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/InitialSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/InitialSolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/InputReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/InputReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/MetaheuristicUtilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/MetaheuristicUtilities.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/OutputWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/OutputWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/Validator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/Validator.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +110,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -83,7 +120,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="local-search-metaheuristics-for-mentorship-and-teamwork" />
-      <option name="PROGRAM_PARAMETERS" value="c 5" />
+      <option name="PROGRAM_PARAMETERS" value="e 0" />
       <extension name="net.ashald.envfile">
         <option name="IS_ENABLED" value="false" />
         <option name="IS_SUBST" value="false" />
@@ -123,5 +160,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/local_search_metaheuristics_for_mentorship_and_teamwork$Main.ic" NAME="Main Coverage Results" MODIFIED="1685632149117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
